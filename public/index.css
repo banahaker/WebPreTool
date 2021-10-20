@@ -37,9 +37,9 @@ nav > h1 > span {
 }
 
 #app {
-    padding-left: 85px;
+    padding: 0 20px;
     display: flex;
-
+    justify-content: center;
 }
 
 #preview {
@@ -174,10 +174,30 @@ nav > h1 > span {
 }
 
 .editor > input {
+    font-size: 1em;
     margin-left: 10px;
     margin-bottom: 10px;
     border-top: none;
     border-left: none;
     border-right: none;
+    border-bottom: #aaa9a9 solid 2px;
+    width: 300px;
+    transition: .3s;
+}
+
+.editor > input:focus {
     border-bottom: rgb(38, 122, 247) solid 2px;
+}
+
+.editor > textarea {
+    padding: 5px;
+    margin-top: 10px;
+    resize: none;
+    border-bottom: #aaa9a9 solid 2px;
+    width: 100%;
+    transition: .3s;
+}
+
+.editor > textarea:focus {
+    border: rgb(38, 122, 247) solid 2px;
 }
