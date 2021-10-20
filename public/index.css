@@ -201,3 +201,15 @@ nav > h1 > span {
 .editor > textarea:focus {
     border: rgb(38, 122, 247) solid 2px;
 }
+
+.editor > button {
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: rgb(38, 122, 247);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 7px 12px;
+    font-size: 1em;
+}
