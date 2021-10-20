@@ -8,6 +8,11 @@
     outline: none;
 }
 
+body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
 nav {
     height: auto;
     width: 100vw;
@@ -118,6 +123,18 @@ nav > h1 > span {
     background-color: #EBEBEB;
 }
 
+.pageSelector > h4 {
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: normal;
+    margin-left: 38%;
+    margin-top: 25%;
+}
+
+.pageSelector > h4:hover {
+    color: rgb(38, 122, 247);
+}
+
 .pageSelector>section {
     cursor: pointer;
     font-size: 1.2em;
@@ -130,7 +147,8 @@ nav > h1 > span {
 }
 
 .pageSelector>section:hover {
-    background-color: #EBEBEB;
+    background-color: #b9b6b6;
+    color: rgb(38, 122, 247);
 }
 
 .addPage {
@@ -167,6 +185,8 @@ nav > h1 > span {
     padding-bottom: 10px;
     border-bottom: #EBEBEB 2px solid;
     margin-bottom: 20px;
+    max-width: 500px;
+    overflow-x: hidden;
 }
 
 .editor > label {
@@ -190,6 +210,7 @@ nav > h1 > span {
 }
 
 .editor > textarea {
+    font-size: 1em;
     padding: 5px;
     margin-top: 10px;
     resize: none;

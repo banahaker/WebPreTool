@@ -16,7 +16,7 @@
     <main id="app">
         <div class="right">
             <div id="preview">
-                <section id="contents" class="prePG"></section>
+                <section id="content" class="prePG"></section>
                 <div class="control">
                     <div class="controls" id="last" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;">
                         <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
@@ -30,17 +30,13 @@
                 <p>Present Preview</p>
                 <button>Copy Code</button>
             </div>
-            <div class="addPage"><span style="color: white;" class="material-icons">add</span></div>
-            <div class="pageSelector">
-                <section>1. What is the WebPreTool</section>
-                <section>2. What is the WebPreTool</section>
-                <section>3. What is the WebPreTool</section>
-                <section>4. What is the WebPreTool</section>
-                <section>5. What is the WebPreTool</section>
+            <div onclick="addPage();" class="addPage"><span style="color: white;" class="material-icons">add</span></div>
+            <div class="pageSelector" id="pageSelector">
+                <h4 onclick="addPage();">Add Some Page</h4>
             </div>
         </div>
         <div class="editor">
-            <h1>Page 1: What is the WebPreTool</h1>
+            <h1 id="title">Click Page to Edit</h1>
             <label for="h1E">Title: </label>
             <input type="text" name="h1" id="h1E"><br>
             <label for="h2E">Second Title: </label>
@@ -49,8 +45,9 @@
             <input type="text" name="h3" id="h3E"><br>
             <label for="conE">Content: </label><br>
             <textarea name="con" id="conE" cols="30" rows="10"></textarea>
-            <button id="saveInfo">Save</button>
+            <button onclick="save();" id="saveInfo">Save</button>
         </div>
     </main>
+    <script src="./app.js" charset="utf-8"></script>
 </body>
 </html>
