@@ -7,6 +7,7 @@
     <title>WebPreTool - TakeUFLab</title>
     <link rel="stylesheet" href="./index.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="./dist/clipboard.min.js"></script>
 </head>
 <body>
     <nav>
@@ -28,7 +29,7 @@
             </div>
             <div class="underTools">
                 <p>Present Preview</p>
-                <button>Copy Code</button>
+                <button id="copyCode" data-clipboard-text="None">Copy Code</button>
             </div>
             <div onclick="addPage();" class="addPage"><span style="color: white;" class="material-icons">add</span></div>
             <div class="pageSelector" id="pageSelector">

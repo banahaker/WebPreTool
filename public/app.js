@@ -1,6 +1,7 @@
 const last = document.getElementById('last');
 const next = document.getElementById('next');
 const preview = document.getElementById('content');
+const copyCode = document.getElementById('copyCode');
 const pageSelector = document.getElementById('pageSelector');
 
 let pages = [];
@@ -104,4 +105,76 @@ next.addEventListener('click', () => {
          <h3>${contents[page][2]}</h3>         
          <p>${contents[page][3]}</p>         
         `;
+});
+
+copyCode.addEventListener('click', () => {
+    let randomID = new Date().getHours();
+    randomID = randomID * new Date().getSeconds();
+    randomID = 'WebPreTool' + randomID;
+
+    let templateFixed = "`<h1>${contents[page][0]}</h1><h2>${contents[page][1]}</h2><h3>${contents[page][2]}</h3> <p>${contents[page][3]}</p>`"
+
+    let Code = `
+        <div id="${randomID}" style="position: relative;margin-top: 50px;margin-bottom: 20px;box-shadow: 0px 0px 6px 8px #EBEBEB ;width: 500px;height: 300px;background-color: #007575;display: flex;align-items: center;justify-content: center;">
+            <section id="content${randomID}" style="color: #fff;
+            text-align: center;"></section>
+            <div class="control" style="position: absolute;bottom: 10px;right: 10px;display: flex;align-items: center;background-color: rgb(41, 41, 41);color: #fff;border: none;border-radius: 3px;">
+                <div class="controls" id="last${randomID}" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;height: 19px;" onMouseOver="this.style.background = 'rgb(59, 59, 59)'" onMouseOut="this.style.background = 'none'">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
+                </div>
+                <div class="controls" id="next${randomID}" style="border-top-right-radius: 3px; border-bottom-right-radius: 3px;height: 19px;" onMouseOver="this.style.background = 'rgb(59, 59, 59)'" onMouseOut="this.style.background = 'none'">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            const last = document.getElementById('last${randomID}');
+            const next = document.getElementById('next${randomID}');
+            const content = document.getElementById('contents${randomID}');
+
+            let contents = {
+                
+            };
+
+            let page = 1;
+            let limitPage = [1, Object.keys(contents).length];
+
+            window.onload = () => {
+                page = 1;
+                content.innerHTML = ${templateFixed};
+            }
+
+
+            last.addEventListener('click', () => {
+                if(page !== limitPage[0]) {
+                    page--;
+                }else {
+                    page = limitPage[1];
+                }
+                content.innerHTML = ${templateFixed};
+            });
+
+            next.addEventListener('click', () => {
+                if(page !== limitPage[1]) {
+                    page++;
+                }else {
+                    page = limitPage[0];
+                }
+                content.innerHTML = ${templateFixed};
+            });
+        </script>
+    `;
+
+    copyCode.setAttribute('data-clipboard-text', Code);
+
+    let clipboard = new ClipboardJS('#copyCode');
+
+    clipboard.on('success', function (e) {
+        e.clearSelection();
+        alert(`Copied!!\n The html id for this are "${randomID}"`);
+    });
+
+    clipboard.on('error', function (e) {
+        alert("Copy Error, may your browser is not support this function");
+    });
 });
