@@ -112,12 +112,18 @@ copyCode.addEventListener('click', () => {
     randomID = randomID * new Date().getSeconds();
     randomID = 'WebPreTool' + randomID;
 
+    let contentFixed = "";
+
+    for(let i=1; i<=pageCount[1]; i++) {
+        contentFixed = contentFixed + `${i} : ["${contents[i][0]}", "${contents[i][1]}", "${contents[i][2]}", "${contents[i][3]}"], \n`;
+    }
+
     let templateFixed = "`<h1>${contents[page][0]}</h1><h2>${contents[page][1]}</h2><h3>${contents[page][2]}</h3> <p>${contents[page][3]}</p>`"
 
     let Code = `
         <div id="${randomID}" style="position: relative;margin-top: 50px;margin-bottom: 20px;box-shadow: 0px 0px 6px 8px #EBEBEB ;width: 500px;height: 300px;background-color: #007575;display: flex;align-items: center;justify-content: center;">
             <section id="content${randomID}" style="color: #fff;
-            text-align: center;"></section>
+            text-align: center; user-select: none;"></section>
             <div class="control" style="position: absolute;bottom: 10px;right: 10px;display: flex;align-items: center;background-color: rgb(41, 41, 41);color: #fff;border: none;border-radius: 3px;">
                 <div class="controls" id="last${randomID}" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;height: 19px;" onMouseOver="this.style.background = 'rgb(59, 59, 59)'" onMouseOut="this.style.background = 'none'">
                     <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg>
@@ -130,14 +136,14 @@ copyCode.addEventListener('click', () => {
         <script type="text/javascript">
             const last = document.getElementById('last${randomID}');
             const next = document.getElementById('next${randomID}');
-            const content = document.getElementById('contents${randomID}');
+            const content = document.getElementById('content${randomID}');
 
             let contents = {
-                
+                ${contentFixed}
             };
 
             let page = 1;
-            let limitPage = [1, Object.keys(contents).length];
+            let limitPage = [1, ${pageCount[1]}];
 
             window.onload = () => {
                 page = 1;
